@@ -1,0 +1,6 @@
+class AddSearchparamsAndSearchvaluesToCamp < ActiveRecord::Migration
+  def change
+    add_column :camps, :searchparams, :string, :default=> ['name', 'theme', 'min_age', 'max_age', 'price', 'weeks', 'am']
+    add_column :camps, :searchvals
+  end
+end

@@ -1,0 +1,229 @@
+  [1m[36m (16.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (13.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateCamps (20151130162533)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "camps" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "theme" varchar, "category" varchar, "price" float, "min_age" integer, "max_age" integer, "reg_limit" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151130162533"]]
+  [1m[35m (14.0ms)[0m  commit transaction
+Migrating to CreateCampers (20151130162722)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "campers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "gender" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151130162722"]]
+  [1m[35m (14.3ms)[0m  commit transaction
+Migrating to CreateBanneds (20151130162902)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "banneds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "protected_camper" varchar, "camper" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151130162902"]]
+  [1m[35m (20.5ms)[0m  commit transaction
+Migrating to CreateJoinTable (20151202155222)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "campers_camps" ("camp_id" integer NOT NULL, "camper_id" integer NOT NULL, "status" varchar) 
+  [1m[36m (0.4ms)[0m  [1mCREATE  INDEX "index_campers_camps_on_camp_id_and_camper_id" ON "campers_camps" ("camp_id", "camper_id")[0m
+  [1m[35m (0.4ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_campers_camps_on_camp_id_and_camper_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_campers_camps_on_camp_id_and_camper_id' AND type='index'
+
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX "index_campers_camps_on_camper_id_and_camp_id" ON "campers_camps" ("camper_id", "camp_id")[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151202155222"]]
+  [1m[36m (18.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20151203220830)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "has_secure_password" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151203220830"]]
+  [1m[36m (17.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddTypeToUser (20151203223724)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (1.3ms)[0m  [1mALTER TABLE "users" ADD "type" varchar[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151203223724"]]
+  [1m[36m (11.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddPhoneToUser (20151203225600)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (1.8ms)[0m  [1mALTER TABLE "users" ADD "phone" varchar[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151203225600"]]
+  [1m[36m (22.3ms)[0m  [1mcommit transaction[0m
+Migrating to AddPasswordDigestToUsers (20151203235610)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "users" ADD "password_digest" varchar[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151203235610"]]
+  [1m[36m (14.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateSessions (20151204015231)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "camp_id" integer, "week" integer, "reg_limit" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151204015231"]]
+  [1m[36m (11.9ms)[0m  [1mcommit transaction[0m
+Migrating to CampersUsers (20151204025418)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "campers_users" ("camper_id" integer, "user_id" integer) [0m
+  [1m[35m (0.6ms)[0m  CREATE  INDEX "index_campers_users_on_camper_id_and_user_id" ON "campers_users" ("camper_id", "user_id")
+  [1m[36mSQL (3.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151204025418"]]
+  [1m[35m (17.7ms)[0m  commit transaction
+Migrating to AddAmWeeksToCamps (20151204113255)
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "camps" ADD "am" boolean
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "camps" ADD "weeks" varchar[0m
+  [1m[35mCamp Load (0.3ms)[0m  SELECT "camps".* FROM "camps"
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151204113255"]]
+  [1m[35m (14.6ms)[0m  commit transaction
+Migrating to AddUserIdToCamper (20151205014358)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.9ms)[0m  ALTER TABLE "campers" ADD "user_id" integer
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151205014358"]]
+  [1m[35m (26.9ms)[0m  commit transaction
+Migrating to AddEnrolledToCamps (20151206230523)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  ALTER TABLE "camps" ADD "enrolled" integer
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151206230523"]]
+  [1m[35m (16.8ms)[0m  commit transaction
+Migrating to AddCampersToUser (20151214172957)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "users" ADD "campers" camper
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151214172957"]]
+  [1m[35m (16.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_campers_camps_on_camper_id_and_camp_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_campers_camps_on_camper_id_and_camp_id' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_campers_camps_on_camp_id_and_camper_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_campers_camps_on_camp_id_and_camper_id' AND type='index'
+[0m
+  [1m[35m (0.4ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_campers_users_on_camper_id_and_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_campers_users_on_camper_id_and_user_id' AND type='index'
+
+
+
+Started GET "/" for 127.0.0.1 at 2015-12-16 10:33:56 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (98.3ms)
+  Rendered layouts/_osunavbar.html.erb (1.1ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (1.8ms)
+Completed 200 OK in 12894ms (Views: 12859.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:10 -0500
+
+
+Started GET "/assets/application.self-b8db419bdb05abb136a51478f62888bbeba20506f7bce69d40d6ea9b258361b3.css?body=1" for 127.0.0.1 at 2015-12-16 10:34:10 -0500
+
+
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:10 -0500
+
+
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:10 -0500
+
+
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:10 -0500
+
+
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:10 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:10 -0500
+
+
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:10 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:11 -0500
+
+
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:11 -0500
+
+
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:11 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:11 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:11 -0500
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 127.0.0.1 at 2015-12-16 10:34:11 -0500
+
+
+Started POST "/login" for 127.0.0.1 at 2015-12-16 10:34:15 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"93dv0bYiM9OGfWMhDGI5/KwpLMWFgU3CMPrBG9UetjgqPWTExeFx5/UBKH7AyCP6LsIAVeuCU6mtPFeIuuQ7nw==", "session"=>{"email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", ""]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 65ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2015-12-16 10:34:15 -0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_osunavbar.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 579ms (Views: 577.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new" for 127.0.0.1 at 2015-12-16 10:34:19 -0500
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (34.1ms)
+  Rendered users/new.html.erb within layouts/application (43.2ms)
+  Rendered layouts/_osunavbar.html.erb (1.6ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_footer.html.erb (2.1ms)
+Completed 200 OK in 556ms (Views: 522.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-12-16 10:34:35 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RqMAUwfI/VTeqhoYlOF7+aWjYcUVZrADhoBbYo05Huab6QtGdAu/YK3WUUdYS2H/J0hNVXtlrmgbRs3x4sOTQQ==", "user"=>{"name"=>"boop", "email"=>"boop@boop.com", "password"=>"[FILTERED]", "phone"=>"boop"}, "commit"=>"Create User"}
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('boop@boop.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered users/_form.html.erb (11.6ms)
+  Rendered users/new.html.erb within layouts/application (17.5ms)
+  Rendered layouts/_osunavbar.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 858ms (Views: 532.3ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-12-16 10:34:43 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"198yDOV0BaIZ/1wVB+dNHOFv6cP2dhH2VMIfVGdzzmsKlTkZlrdHlmqDF0rLTVcaY4TFU5h1D53JBInHCIlDzA==", "user"=>{"name"=>"boop", "email"=>"boop@boop.com", "password"=>"[FILTERED]", "phone"=>"boop"}, "commit"=>"Create User"}
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('boop@boop.com') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "boop"], ["email", "boop@boop.com"], ["password_digest", "$2a$10$daZfdkBC2cOGVhbdnrKmzOaPqkK4rLlfKNdo8tvph2LFs335x0S/e"], ["phone", "boop"], ["created_at", "2015-12-16 15:34:43.637584"], ["updated_at", "2015-12-16 15:34:43.637584"]]
+  [1m[36m (14.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 341ms (ActiveRecord: 15.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 10:34:43 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mUser Load (2.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCamper Load (0.7ms)[0m  SELECT "campers".* FROM "campers" WHERE "campers"."user_id" = ?  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (87.6ms)
+  Rendered layouts/_osunavbar.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 615ms (Views: 606.7ms | ActiveRecord: 4.4ms)

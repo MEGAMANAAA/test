@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<ul>
+<li>
+  <strong>Name:</strong>
+  <%= @camp.name %>
+</li>
+
+<li>
+  <strong>Theme:</strong>
+  <%= @camp.theme %>
+</li>
+
+<li>
+  <strong>Price:</strong>
+  <%= @camp.price %>
+</li>
+
+<li>
+  <strong>Min age:</strong>
+  <%= @camp.min_age %>
+</li>
+
+<li>
+  <strong>Max age:</strong>
+  <%= @camp.max_age %>
+</li>
+
+<li>
+  <strong>Weeks:</strong>
+  <%= @camp.weeks %>
+</li>
+
+<li>
+  <strong>Morning?</strong>
+  <%= @camp.am %>
+</li>
+
+<p>
+  <strong>Reg Limit:</strong>
+  <%= @camp.reg_limit %>
+</p>
+<p>
+  <strong>Already Enrolled:</strong>
+  <%= @camp.enrolled %>
+</p>
+</ul>
+<%= link_to 'Edit', edit_camp_path(@camp) %> |
+<%= link_to 'Back', camps_path %>

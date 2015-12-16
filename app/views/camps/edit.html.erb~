@@ -1,0 +1,4 @@
+<h1>Editing Camp</h1>
+
+<%= link_to 'Show', @camp %> |
+<%= link_to 'Back', camps_path %>

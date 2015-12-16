@@ -1,0 +1,9 @@
+<footer class="footer">
+  
+  <div class = "container">
+    <ul>
+     <li class="list-group-item"><%= link_to "Logout", root_path%></li>
+     <li class="list-group-item"><%= link_to "New User", new_path%></li>
+    </ul>
+  </div>
+</footer>

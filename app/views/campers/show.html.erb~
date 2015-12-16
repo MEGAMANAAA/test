@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @camper.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @camper.age %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @camper.gender %>
+</p>
+
+<p>
+  <strong>Guardian:</strong>
+  <%= @user.name %>
+</p>
+
+<%= link_to 'Edit', edit_camper_path(@camper) %> |
+<%= link_to 'Back', campers_path %>

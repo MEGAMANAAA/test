@@ -1,0 +1,74 @@
+class EnrolledListsController < ApplicationController
+  before_action :set_enrolled_list, :set_user, :set_camp, only: [:show, :edit, :update, :destroy]
+
+  # GET /enrolled_lists
+  # GET /enrolled_lists.json
+  def index
+    @enrolled_lists = EnrolledList.all
+  end
+
+  # GET /enrolled_lists/1
+  # GET /enrolled_lists/1.json
+  def show
+  end
+
+  # GET /enrolled_lists/new
+  def new
+    @enrolled_list = EnrolledList.new
+  end
+
+  # GET /enrolled_lists/1/edit
+  def edit
+  end
+
+  # POST /enrolled_lists
+  # POST /enrolled_lists.json
+  def create
+    @enrolled_list = EnrolledList.new(enrolled_list_params)
+
+    respond_to do |format|
+      if @enrolled_list.save
+        format.html { redirect_to @enrolled_list, notice: 'Enrolled list was successfully created.' }
+        format.json { render :show, status: :created, location: @enrolled_list }
+      else
+        format.html { render :new }
+        format.json { render json: @enrolled_list.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /enrolled_lists/1
+  # PATCH/PUT /enrolled_lists/1.json
+  def update
+    respond_to do |format|
+      if @enrolled_list.update(enrolled_list_params)
+        format.html { redirect_to @enrolled_list, notice: 'Enrolled list was successfully updated.' }
+        format.json { render :show, status: :ok, location: @enrolled_list }
+      else
+        format.html { render :edit }
+        format.json { render json: @enrolled_list.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /enrolled_lists/1
+  # DELETE /enrolled_lists/1.json
+  def destroy
+    @enrolled_list.destroy
+    respond_to do |format|
+      format.html { redirect_to enrolled_lists_url, notice: 'Enrolled list was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_enrolled_list
+      @enrolled_list = EnrolledList.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def enrolled_list_params
+      params.require(:enrolled_list).permit(:campers, :camp)
+    end
+end

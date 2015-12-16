@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* Resets */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, blockquote, cite, code, del, dfn, font, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+/*Bootstrap */
+@import "bootstrap";
+
+/* HTML */
+
+body { font-family: Arial, sans-serif; text-align: center; background: #222; line-height: 1.5; font-size: 13px; }
+h1, h2, h3, h4, h5, h6 { }
+h2 { font-size: 24px; font-weight: 400; text-transform: uppercase; }
+h3 { font-size: 20px; font-weight: 400; color: #bb0000; }
+h4 { font-size: 18px; font-weight: 400; color: #666; }
+h5 { font-size: 14px; color: #bb0000; font-weight: 700; }
+p { margin: 0 0 10px 0; }
+div { overflow: hidden; }
+hr { border: 1px solid #fff; border-top: 1px solid #000; }
+ul { list-style: none; }
+abbr { border-bottom: 1px solid #333; cursor: help; }
+a:link { color: #bb0000; text-decoration: none; }
+a:visited { color: #660000; }
+a:hover { text-decoration: underline; background: none; }
+a:focus { outline: 1px solid black; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+caption { text-align: left; margin: 5px 0 0 0; padding: 0 0 2px 0; font-size: 12px; font-weight: 700; line-height: 1; }
+th { background: #ddd; border: solid #ddd; color: #666; font-weight: 700; text-align: left; border-width: 1px 0; padding: 5px; font-size: 13px; }
+
+/* OSU Navbar styles */
+
+#osu { margin: 0px; background: transparent linear-gradient(to bottom, #E3E3E3 0%, #B9B9BA 100%) repeat scroll 0% 0%; border-bottom: 5px solid #B00; }
+#osu_navbar_heading { margin-top: -40px; }
+#osu_navbar .container { width: 960px; margin: 0px auto; }
+#osu_navbar .univ_info { float: left; padding: 1em 0px; }
+#osu_navbar p { margin: 0px; padding: 0px; }
+#osu_navbar .univ_name a { height: 16px; width: 80px; display: block; margin-left: 20px; margin-right: 8px; text-decoration: none; color: black; font-size: 19px; }
+#osu_navbar .univ_links { float: right; clear: none; padding: 1em 0px 0px; margin-top: 0px; }
+#osu_navbar div .links { float: left; }
+#osu_navbar div .links ul { margin: 0px; }
+#osu_navbar div .links ul li { list-style: outside none none; float: left; margin-right: 1em; }
+#osu_navbar div .links ul li a { color: #333; text-decoration: none; }
+
+/* Camp Navbar styles */
+
+#camp_navbar #logo { text-decoration: none; font-size: 30px; color: #FFFFFF; float: left; margin-left: 50px; }
+#camp_navbar li a { list-style: outside none none; color: #FFFFFF; float: right; margin-right: 50px; padding: 10px; font-size: 20px;}
+
+/* Content styles */
+
+#reg_content { background: #FFFFFF; margin: 0px 50px 10px 50px; padding: 10px }
+
+/* Footer styles */
+
+#foot p { color: #D3D3D3; }
+#foot li a {list-style: outside none none; float: left; margin-left: 20px; color: #FF0000; }
+#foot .container { margin: auto; width: 140px; }
+
+
+

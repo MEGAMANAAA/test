@@ -1,0 +1,74 @@
+class WaitListsController < ApplicationController
+  before_action :set_wait_list, :set_user, :set_camp, only: [:show, :edit, :update, :destroy]
+
+  # GET /wait_lists
+  # GET /wait_lists.json
+  def index
+    @wait_lists = WaitList.all
+  end
+
+  # GET /wait_lists/1
+  # GET /wait_lists/1.json
+  def show
+  end
+
+  # GET /wait_lists/new
+  def new
+    @wait_list = WaitList.new
+  end
+
+  # GET /wait_lists/1/edit
+  def edit
+  end
+
+  # POST /wait_lists
+  # POST /wait_lists.json
+  def create
+    @wait_list = WaitList.new(wait_list_params)
+
+    respond_to do |format|
+      if @wait_list.save
+        format.html { redirect_to @wait_list, notice: 'Wait list was successfully created.' }
+        format.json { render :show, status: :created, location: @wait_list }
+      else
+        format.html { render :new }
+        format.json { render json: @wait_list.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /wait_lists/1
+  # PATCH/PUT /wait_lists/1.json
+  def update
+    respond_to do |format|
+      if @wait_list.update(wait_list_params)
+        format.html { redirect_to @wait_list, notice: 'Wait list was successfully updated.' }
+        format.json { render :show, status: :ok, location: @wait_list }
+      else
+        format.html { render :edit }
+        format.json { render json: @wait_list.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /wait_lists/1
+  # DELETE /wait_lists/1.json
+  def destroy
+    @wait_list.destroy
+    respond_to do |format|
+      format.html { redirect_to wait_lists_url, notice: 'Wait list was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_wait_list
+      @wait_list = WaitList.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def wait_list_params
+      params.require(:wait_list).permit(:campers, :camp)
+    end
+end

@@ -1,0 +1,25 @@
+<%= form_for(@banned) do |f| %>
+  <% if @banned.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@banned.errors.count, "error") %> prohibited this banned from being saved:</h2>
+
+      <ul>
+      <% @banned.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :protected_camper %><br>
+    <%= f.text_field :protected_camper %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

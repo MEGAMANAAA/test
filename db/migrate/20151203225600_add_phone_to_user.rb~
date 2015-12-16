@@ -1,0 +1,5 @@
+class AddPhoneToUser < ActiveRecord::Migration
+  def change
+    add_column :phone, :phone, :string
+  end
+end

@@ -1,0 +1,11 @@
+<% provide(:title, "Home") %>
+<h1>Welcome to the Registration App!</h1>
+
+<%= form_for :user do |f| %>
+  Email: <%= f.text_field :email %><br />
+  Password: <%= f.password_field :password %><br />
+<br />
+ <%= link_to 'Login', "startpage", :onclick=>"$('.users_form').submit()" %>
+<% end %>
+<br>
+<p>New Users: Please click the "New User" button to set up an account</p>

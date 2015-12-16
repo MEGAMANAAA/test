@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+<h1>Welcome <%= User.find_by(id: session[:user_id]).name %> !</h1>
+=======
+
+<h1>Welcome User!</h1>
+>>>>>>> 2cd3d4bee0d6b9f909265446a814205cb7867351
+
+<h3>Here are some tasks you may wish to perform:</h3>
+<ul>
+<li><a href="campers/new">Add or edit your child as a camper</li>
+<li><a href="camps">See the camp grid and register for camp</li>
+
+</ul>

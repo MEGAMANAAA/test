@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  camp_id: 
+  week: 
+  reg_limit: 
+
+two:
+  camp_id: 
+  week: 
+  reg_limit: 

@@ -1,0 +1,6 @@
+class AddAmWeeksToCamps < ActiveRecord::Migration
+  def change
+	add_column :camps, :am, :boolean
+	add_column :camps, :weeks, :string
+  end
+end

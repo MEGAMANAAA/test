@@ -1,0 +1,15 @@
+class RegistrationsController < ApplicationController
+
+
+def new
+   @regist = Regist.new
+end
+
+def create
+   @regist=Regist.new(params[:regist])
+   if @regist.save
+      redirect_to new_regist_path
+   end
+end
+
+end

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h1>Welcome, <%= @user.name %></h1>
+</p>
+
+<p><h3>My Campers:</h3></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.campers.each do |camper| %>
+      <tr>
+        <td><%= camper.name %></td>
+        <td><%= camper.age %></td>
+        <td><%= camper.gender %></td>
+        <td><%= link_to 'Show', camper %></td>
+        <td><%= link_to 'Edit', edit_camper_path(camper) %></td>
+        <td><%= link_to 'Destroy', camper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Back', startpage_path %> |
+<%= link_to 'New Camper', new_camper_path %>
+

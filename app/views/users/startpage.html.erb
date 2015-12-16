@@ -1,0 +1,9 @@
+
+<div class="jumbotron"><h1>Welcome <%= User.find_by(id: session[:user_id]).name %>!</h1></div>
+
+<h3>Here are some potential tasks:</h3>
+<ul class="list-group">
+  <li class="list-group-item"><a href="campers/new">Add or Edit a Camper</li>
+  <li class="list-group-item"><%= link_to 'My Information', user_path(session[:user_id]) %></li>
+  <li class="list-group-item"><a href="http://recsports.osu.edu/posts/documents/camp-recky-parent-guide.pdf">Camp Recky Parent Info (.pdf)</li>
+</ul>

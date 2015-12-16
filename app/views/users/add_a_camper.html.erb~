@@ -1,0 +1,6 @@
+<h1>New Camper</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', startpage_path %> |
+<%= link_to 'Camper Listings', campers_path %>

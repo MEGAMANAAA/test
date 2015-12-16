@@ -1,0 +1,6 @@
+class ChangeUserIdCamper < ActiveRecord::Migration
+  def change
+    remove_column :campers, :user_id, :string
+    belongs_to :user
+  end
+end

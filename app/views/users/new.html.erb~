@@ -1,0 +1,6 @@
+<h1>New User</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', root_path, id: "logo" %>|
+<%= link_to 'User List', users_path %>

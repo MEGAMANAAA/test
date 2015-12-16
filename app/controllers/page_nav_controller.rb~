@@ -1,0 +1,19 @@
+class PageNavController < ApplicationController
+  def home
+  end
+
+  def staffer_home
+  end
+
+  def staffer_start
+  end
+
+  def camper_start
+  end
+
+  def guardian_start
+  end
+
+  def guardian_home
+  end
+end

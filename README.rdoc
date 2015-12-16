@@ -1,0 +1,33 @@
+== README
+
+Program is in disarray at the moment, and we will try to figure out how Rails works before the final submission version. We have functionalities sketched, but have only been able to implement some of them so far.
+
+Issues
+
+built app before doing Heroku, and it is throwing ! ERROR: failed to detect set buildpack heroku/ruby #are we doing a different dB type now?
+
+Project Requirements
+
+multiple camps (each session 1 week of half days)
+camps have category and theme
+each camp can have multiple sessions, on different weeks
+camps have age limits, sessions have registration limits
+each camper has account, which tracks -- name, gender, birthdate -- (emergency) contact -- people authorized/banned from picking up
+Project Design
+
+uses SQLite database ### Tables
+camps: id, name, theme, category, price, min_age, max_age
+sessions: id, camp_id, week, reg_limit
+camper_info: id, user_id, name, gender, birthdate, contact
+camper_sessions: camper_id, session_id
+pick_up: id, camper_id, name, authorized_flag
+users: id, type, name, email, phone, hashed_passwords ### User Interaction Workflow (phrases enclosed in "" = actions that can translate into methods)
+user goes to login page with buttons for "sign in" and "create account"
+sign in takes user to home page, which contains camper selection list -- user clicks "add camper" to add name to selection list --- user goes to separate page to create camper profile -- user selects entries on list and clicks "remove camper" to remove name
+home page also contains camp checklist/table -- page shows camps available for campers in selection list -- table has columns for checkbox, camp name, dates text field, camper selection list -- user checks boxes for desired camps, fills out dates text field, selects campers to attend camp
+user clicks "register" button at bottom of page
+system processes registration ### Design Workflow (words enclosed in "" = components in app)
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

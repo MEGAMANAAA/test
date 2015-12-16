@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @banned.name %>
+</p>
+
+<p>
+  <strong>Protected camper:</strong>
+  <%= @banned.protected_camper %>
+</p>
+
+<p>
+  <strong>Camper:</strong>
+  <%= @banned.camper %>
+</p>
+
+<%= link_to 'Edit', edit_banned_path(@banned) %> |
+<%= link_to 'Back', banneds_path %>

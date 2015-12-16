@@ -1,0 +1,27 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+ font-size: 30px;
+}
+
+p {
+  font-size: 15px;
+}
+
+#home {
+  font-size: 30px;
+}
+
+button {
+  font-size: 15px;
+  color: #FFFFFF;
+  background: #800000;
+  border: 1px;
+  border-radius: 5px; 
+}
+
+a {
+  font-size: 15px;
+  list-style: outside none none;
+}

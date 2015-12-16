@@ -1,0 +1,29 @@
+<%= form_for(@camper) do |f| %>
+  <% if @camper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@camper.errors.count, "error") %> prohibited this camper from being saved:</h2>
+
+      <ul>
+      <% @camper.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
